@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="saveDate()">点我保存数据</button>
+    <button onclick="readDate()">点我读取数据</button>
+    <button onclick="deleteDate()">点我删除数据</button>
+    <button onclick="deleteAllDate()">点我清空数据</button>
+    <script>
+        function saveDate(){
+            let p = {name:'makima',age:18}
+            //key和value都要是字符串,不是就会调用toString
+           sessionStorage.setItem('msg','makima')
+           sessionStorage.setItem('msg2',666)
+           sessionStorage.setItem('person',JSON.stringify(p))//解析成对象
+        }
+        function readDate(){
+           console.log(sessionStorage.getItem('msg'));
+           const result = sessionStorage.getItem('person')
+           console.log(JSON.parse(result));
+           //读没有的东西时null,读JSON返回也是null
+        }
+        function deleteDate(){
+            sessionStorage.removeItem('msg2')
+        }
+        function deleteAllDate(){
+            sessionStorage.clear()
+        }
+    </script>
+</body>
+</html>
